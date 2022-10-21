@@ -1,5 +1,4 @@
 // Business
-// narrowed [nim, python, Javascript, R, Ruby]
 function langType() {
   const comped = parseInt(document.getElementById("lang-type").value);
   const compiled = ["C#", "Nim", "Rust", "Swift"];
@@ -47,11 +46,22 @@ function getLanguage(event) {
     suggested = tabbed(langs.list);
   } else {
     if (langs.comped) {
-
+      checkQuestion = yesReturn("first-lang", "C#", ["Swift", "Rust"]);
+      if (checkQuestion === "C#") {
+        suggested = "C#";
+      }
+      checkQuestion = yesReturn("meta-q", "Rust", ["C#", "Swift"]);
+      if (checkQuestion === "Rust") {
+        suggested = "Rust";
+      }
+      checkQuestion = yesReturn("ios", "Swift", ["C#", "Rust"]);
+      if (checkQuestion === "Swift") {
+        suggested = "Swift";
+      }
     } else {
       checkQuestion = yesReturn("work-data", "R", ["Ruby", "Javascript"]);
       if (checkQuestion === "R") {
-        suggested = "R"
+        suggested = "R";
       }
       checkQuestion = yesReturn("local-script", "Javascript", ["Ruby", "R"]);
       if (checkQuestion === "Javascript") {
