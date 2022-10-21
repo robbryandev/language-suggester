@@ -17,28 +17,39 @@
     <hr class="mb-3">
     <form>
       <div class="form-group w-75 m-auto text-center">
-          <label for="lang-type">Prefered Language Type:</label>
-          <br>
-          <select name="lang-type" id="lang-type" class="form-control">
-            <option value="1">Interpreted</option>
-            <option value="2">Compiled</option>
-          </select>
+        <label for="lang-type">Prefered Language Type:</label>
+        <br>
+        <select name="lang-type" id="lang-type" class="form-control">
+          <option value="0">Interpreted</option>
+          <option value="1">Compiled</option>
+        </select>
         <br>
         <label for="tabbed">Tab based blocks:</label>
         <br>
         <select name="lang-type" id="tabbed" class="form-control">
           <option value="1">Yes</option>
-          <option value="2">No</option>
+          <option value="0">No</option>
         </select>
-      <br>
-        <label for="in-3">Input 3</label>
-        <input type="text" class="form-control" id="in-3">
+        <div id="btn-spot-1">
+          <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        </div>
         <br>
-        <label for="in-4">Input 4</label>
-        <input type="text" class="form-control" id="in-4">
+        <label for="in-3" class="invisible inter other">inter 1</label>
+        <input type="text" class="form-control invisible inter other" id="in-3">
         <br>
-        <label for="in-5">Input 5</label>
-        <input type="text" class="form-control" id="in-5">
+        <label for="in-4" class="invisible inter other">inter 2</label>
+        <input type="text" class="form-control invisible inter other" id="in-4">
+        <br>
+        <label for="in-5" class="invisible inter other">inter 3</label>
+        <input type="text" class="form-control invisible inter other" id="in-5">
+        <label for="comp-3" class="invisible comp other">comp 1</label>
+        <input type="text" class="form-control invisible comp other" id="comp-3">
+        <br>
+        <label for="comp-4" class="invisible comp other">comp 2</label>
+        <input type="text" class="form-control invisible comp other" id="comp-4">
+        <br>
+        <label for="comp-5" class="invisible comp other">comp 3</label>
+        <input type="text" class="form-control invisible comp other" id="comp-5">
       </div>
     </form>
   </div>
