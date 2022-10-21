@@ -1,5 +1,5 @@
 // Business
-// narrowed [nim, python, Javascript, R]
+// narrowed [nim, python, Javascript, R, Ruby]
 function langType() {
   const comped = parseInt(document.getElementById("lang-type").value);
   const compiled = ["C#", "Nim", "Rust", "Swift"];
