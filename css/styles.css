@@ -9,6 +9,11 @@ form {
   font-size: large;
 }
 
+img {
+  width: 75%;
+  height: 75%;
+}
+
 /* Classes */
 
 .title-text {

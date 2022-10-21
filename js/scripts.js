@@ -52,6 +52,7 @@ function getLanguage(event) {
   } else {
     // Compiled language branching
     if (langs.comped) {
+      suggested = "C#";
       checkQuestion = yesReturn("first-lang", "C#", ["Swift", "Rust"]);
       if (checkQuestion === "C#") {
         suggested = "C#";
@@ -66,6 +67,7 @@ function getLanguage(event) {
       }
       // Interpreted Language branching
     } else {
+      suggested = "Javascript";
       checkQuestion = yesReturn("work-data", "R", ["Ruby", "Javascript"]);
       if (checkQuestion === "R") {
         suggested = "R";
@@ -85,6 +87,12 @@ function getLanguage(event) {
 }
 
 // Ui
+
+// Sets image path to show the language logo
+function setImg(lang) {
+  const img = document.querySelector("#lang-img");
+  img.src = `img/${lang.toLowerCase()}.png`.replace("c#", "csharp");
+}
 
 // Hides extra questions
 function hideOther(comp) {
@@ -146,7 +154,8 @@ addEventListener("load", function () {
     const name = document.querySelector("#u-name").value;
     result.classList.remove("invisible");
     document.querySelector("#placeholder").innerText = pickedLang;
-    document.querySelector("#result-prompt").innerText = `Hey ${name}, you should REALLY learn ${pickedLang}. It sounds like you would really like it.`
+    document.querySelector("#result-prompt").innerText = `Hey ${name}, you should REALLY learn ${pickedLang}. It sounds like you would really like it.`;
+    setImg(pickedLang);
   });
   // Runs on form reset
   form.addEventListener("reset", function() {
