@@ -60,29 +60,28 @@ function show(comp) {
   showSpot.appendChild(elements.cloneNode(true));
 }
 
-function logStates(comp, tab) {
-  console.log(comp);
-  console.log(tab);
+let compedState = false;
+let tabbedState = false;
+
+function inputStates(cState, tState) {
+  this.setInterval(() => {
+    const isComped = langType().comped;
+    const isTabbed = checkTabbed();
+    if (isComped !== cState || isTabbed !== tState) {
+      cState = isComped;
+      tState = checkTabbed();
+      if (tState === false) {
+        show(isComped);
+      } else {
+        hideAllOther(isComped);
+      }
+    }
+    compedState = cState;
+    tabbedState = tabbedState
+  }, 500)
 }
 
 addEventListener("load", function () {
   const form = this.document.querySelector("form");
-  let compedState;
-  let tabbedState;
-  logStates(compedState, tabbedState);
-  this.setInterval(() => {
-    const isComped = langType().comped;
-    const isTabbed = checkTabbed();
-    logStates(compedState, tabbedState);
-    if (isComped !== compedState || isTabbed !== tabbedState) {
-      compedState = isComped;
-      tabbedState = checkTabbed();
-      if (tabbedState === false) {
-        show(isComped);
-      } else {
-        hideAllOther(isComped);
-        return;
-      }
-    }
-  }, 500)
+  inputStates(compedState, tabbedState);
 })
