@@ -74,7 +74,6 @@ function getLanguage(event) {
       }
     }
   }
-  console.log(suggested);
   return suggested;
 }
 
@@ -139,6 +138,9 @@ addEventListener("load", function () {
   const form = this.document.querySelector("form");
   inputStates(compedState, tabbedState);
   form.addEventListener("submit", function(ev) {
-    getLanguage(ev);
+    const pickedLang = getLanguage(ev);
+    const result = document.querySelector("#result-text");
+    result.classList.remove("invisible");
+    result.querySelector("#placeholder").innerText = pickedLang;
   });
 })
