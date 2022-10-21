@@ -88,16 +88,6 @@ function hideOther(comp) {
   }
 }
 
-function hideAllOther() {
-  const showSpot = document.querySelector(".other-spot");
-  if (showSpot.querySelector("#comp-box") !== null) {
-    showSpot.removeChild(showSpot.querySelector("#comp-box"));
-  }
-  if (showSpot.querySelector("#inter-box") !== null) {
-    showSpot.removeChild(showSpot.querySelector("#inter-box"));
-  }
-}
-
 function show(comp) {
   const hideSpot = document.querySelector(".hide-spot");
   const showSpot = document.querySelector(".other-spot");
@@ -124,23 +114,26 @@ function inputStates(cState, tState) {
       if (tState === false) {
         show(isComped);
       } else {
-        hideAllOther(isComped);
+        hideOther(isComped);
       }
     }
     compedState = cState;
-    tabbedState = tabbedState
-  }, 500)
+    tabbedState = tabbedState;
+  }, 500);
 }
 
 
 // load
 addEventListener("load", function () {
   const form = this.document.querySelector("form");
+  const result = document.querySelector(".result");
   inputStates(compedState, tabbedState);
   form.addEventListener("submit", function(ev) {
     const pickedLang = getLanguage(ev);
-    const result = document.querySelector("#result-text");
     result.classList.remove("invisible");
-    result.querySelector("#placeholder").innerText = pickedLang;
+    document.querySelector("#placeholder").innerText = pickedLang;
+  });
+  form.addEventListener("reset", function() {
+    result.classList.add("invisible");
   });
 })
