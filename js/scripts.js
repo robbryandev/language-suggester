@@ -1,4 +1,6 @@
 // Business
+
+// Gets an object with a bool of if the languages are compiled and a list of language options
 function langType() {
   const comped = parseInt(document.getElementById("lang-type").value);
   const compiled = ["C#", "Nim", "Rust", "Swift"];
@@ -11,6 +13,7 @@ function langType() {
   }
 }
 
+// Logic check for if the user wants a language with tab based syntax
 function tabbed(list) {
   const tabbedLangs = ["Nim", "Python"];
   if (list.includes(tabbedLangs[0])) {
@@ -20,11 +23,13 @@ function tabbed(list) {
   }
 }
 
+// Checks if the current wants a tabbed language
 function checkTabbed() {
   const tabInput = parseInt(document.querySelector("#tabbed").value);
   return Boolean(tabInput);
 }
 
+// Utility function for checking the bool value of a dropdown and returning the wanted result
 function yesReturn(id, entry, noList) {
   const idInput = parseInt(document.querySelector(`#${id}`).value);
   const idBool = Boolean(idInput);
@@ -45,6 +50,7 @@ function getLanguage(event) {
   if (checkTabbed()) {
     suggested = tabbed(langs.list);
   } else {
+    // Compiled language branching
     if (langs.comped) {
       checkQuestion = yesReturn("first-lang", "C#", ["Swift", "Rust"]);
       if (checkQuestion === "C#") {
@@ -58,6 +64,7 @@ function getLanguage(event) {
       if (checkQuestion === "Swift") {
         suggested = "Swift";
       }
+      // Interpreted Language branching
     } else {
       checkQuestion = yesReturn("work-data", "R", ["Ruby", "Javascript"]);
       if (checkQuestion === "R") {
@@ -78,6 +85,8 @@ function getLanguage(event) {
 }
 
 // Ui
+
+// Hides extra questions
 function hideOther(comp) {
   const showSpot = document.querySelector(".other-spot");
   if (showSpot.querySelector("#comp-box") !== null) {
@@ -88,6 +97,7 @@ function hideOther(comp) {
   }
 }
 
+// Shows extra questions
 function show(comp) {
   const hideSpot = document.querySelector(".hide-spot");
   const showSpot = document.querySelector(".other-spot");
@@ -101,9 +111,11 @@ function show(comp) {
   showSpot.appendChild(elements.cloneNode(true));
 }
 
+// Save global state of compiled and tabbed drop downs for change caching
 let compedState = false;
 let tabbedState = false;
 
+// Controls when extra questions are displayed
 function inputStates(cState, tState) {
   this.setInterval(() => {
     const isComped = langType().comped;
@@ -123,16 +135,18 @@ function inputStates(cState, tState) {
 }
 
 
-// load
+// Runs on window load
 addEventListener("load", function () {
   const form = this.document.querySelector("form");
   const result = document.querySelector(".result");
   inputStates(compedState, tabbedState);
+  // Runs on form submit
   form.addEventListener("submit", function(ev) {
     const pickedLang = getLanguage(ev);
     result.classList.remove("invisible");
     document.querySelector("#placeholder").innerText = pickedLang;
   });
+  // Runs on form reset
   form.addEventListener("reset", function() {
     result.classList.add("invisible");
   });

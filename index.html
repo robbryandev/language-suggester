@@ -12,11 +12,14 @@
   <title>Language Suggester</title>
 </head>
 <body>
+  <!-- Main Container -->
   <div class="container">
     <h1 class="text-center mb-2 mt-2 title-text">Language Suggester</h1>
     <br>
+    <!-- Input Form -->
     <form class="mt-2">
       <div class="form-group w-75 m-auto text-center">
+        <!-- Base Questions -->
         <label for="lang-type" class="mt-2">Prefered Language Type:</label>
         <br>
         <select name="lang-type" id="lang-type" class="form-control">
@@ -30,17 +33,23 @@
           <option value="1">Yes</option>
           <option value="0">No</option>
         </select>
+        <!-- Question Holder for hidden questions to be placed into -->
         <div class="other-spot"></div>
+        <!-- Buttons -->
         <div id="btn-spot">
           <button type="submit" class="btn btn-primary mt-4">Submit</button>
           <button type="reset" class="btn btn-danger mt-4">Reset</button>
         </div>
       </div>
     </form>
+    <!-- Result -->
     <div class="result invisible w-25 m-auto mt-3 pt-3">
         <h1 id="result-text">Result: <span id="placeholder"></span></h1>
+        <p class="result-prompt"></p>
     </div>
+    <!-- Hidden Questions show up when the tabbed question is set to no -->
     <div class="hide-spot invisible">
+      <!-- Interpreted Language questions -->
       <div id="inter-box">
         <br>
         <label for="local-script" class="inter other mt-2">Do you want to do local scripting?</label>
@@ -64,6 +73,7 @@
           <option value="0">No</option>
         </select>
       </div>
+      <!-- Compiled language questions -->
       <div id="comp-box">
         <br>
         <label for="first-lang" class="inter other mt-2">Is this your first language?</label>
