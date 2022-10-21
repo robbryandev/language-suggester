@@ -1,17 +1,14 @@
 # Language Suggester
 
 ## Contributors
----
 
 * Robert Bryan
 
 ## Description
----
 
 An interactive website for choosing a programming language you might want to learn.
 
 ## Technologies Used
----
 
 * HTML
 * CSS
@@ -19,18 +16,15 @@ An interactive website for choosing a programming language you might want to lea
 * BOOTSTRAP
 
 ## Setup
----
 
 Just download this repo and open up index.html in your browser of choice.
 
 
 ## Known bugs
----
 
 * None
 
 ## License info
----
 
 MIT License
 
