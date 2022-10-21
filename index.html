@@ -12,20 +12,23 @@
 <body>
   <!-- Main Container -->
   <div class="container">
-    <h1 class="text-center mb-2 mt-2 title-text">Language Suggester</h1>
+    <h1 class="text-center mb-2 pt-4 title-text">Language Suggester</h1>
     <br>
     <!-- Input Form -->
     <form class="mt-2">
       <div class="form-group w-75 m-auto text-center">
+        <label for="u-name" class="mt-2">What's your name?</label>
+        <input type="text" id="u-name" class="form-control">
+        <br>
         <!-- Base Questions -->
-        <label for="lang-type" class="mt-2">Prefered Language Type:</label>
+        <label for="lang-type" class="mt-2">What type of language do you prefer?</label>
         <br>
         <select name="lang-type" id="lang-type" class="form-control">
           <option value="0">Interpreted</option>
           <option value="1">Compiled</option>
         </select>
         <br>
-        <label for="tabbed" class="mt-2">Tab based blocks:</label>
+        <label for="tabbed" class="mt-2">Do you want tab based blocks?</label>
         <br>
         <select name="tabbed" id="tabbed" class="form-control">
           <option value="1">Yes</option>
@@ -35,7 +38,7 @@
         <div class="other-spot"></div>
         <!-- Buttons -->
         <div id="btn-spot">
-          <button type="submit" class="btn btn-primary mt-4">Submit</button>
+          <button type="submit" class="btn btn-primary mt-4 mr-2">Submit</button>
           <button type="reset" class="btn btn-danger mt-4">Reset</button>
         </div>
       </div>
@@ -43,7 +46,7 @@
     <!-- Result -->
     <div class="result invisible w-25 m-auto mt-3 pt-3">
         <h1 id="result-text">Result: <span id="placeholder"></span></h1>
-        <p class="result-prompt"></p>
+        <p id="result-prompt"></p>
     </div>
     <!-- Hidden Questions show up when the tabbed question is set to no -->
     <div class="hide-spot invisible">

@@ -143,8 +143,10 @@ addEventListener("load", function () {
   // Runs on form submit
   form.addEventListener("submit", function(ev) {
     const pickedLang = getLanguage(ev);
+    const name = document.querySelector("#u-name").value;
     result.classList.remove("invisible");
     document.querySelector("#placeholder").innerText = pickedLang;
+    document.querySelector("#result-prompt").innerText = `Hey ${name}, you should REALLY learn ${pickedLang}. It sounds like you would really like it.`
   });
   // Runs on form reset
   form.addEventListener("reset", function() {
