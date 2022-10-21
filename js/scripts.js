@@ -14,7 +14,6 @@ function langType() {
 
 function tabbed(list) {
   const tabbedLangs = ["Nim", "Python"];
-  console.log(list);
   if (list.includes(tabbedLangs[0])) {
     return tabbedLangs[0];
   } else {
@@ -57,6 +56,11 @@ function getLanguage(event) {
       checkQuestion = yesReturn("local-script", "Javascript", ["Ruby", "R"]);
       if (checkQuestion === "Javascript") {
         suggested = "Javascript";
+      } else {
+        checkQuestion = yesReturn("back-end", "Ruby", ["Javascript", "R"]);
+        if (checkQuestion === "Ruby") {
+          suggested = "Ruby";
+        }
       }
     }
   }
