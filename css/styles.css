@@ -1,0 +1,19 @@
+body {
+  background-color: #272727;
+  color: white;
+}
+
+form {
+  font-size: large;
+}
+
+.form-control {
+  background-color: #8d8d8d;
+  color: white;
+}
+
+.title-text {
+  font-size: 100;
+  font-weight: bold;
+  font-style: italic;
+}
