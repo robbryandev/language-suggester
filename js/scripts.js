@@ -5,10 +5,10 @@ function langType() {
   const compiled = ["C#", "Nim", "Rust", "Swift"];
   const interpreted = ["Ruby", "JavaScript", "Python"];
 
-  if (Boolean(comped)) {
-    return {"comped": true, "list": compiled};
+  if (comped === 1) {
+    return { "comped": true, "list": compiled };
   } else {
-    return {"comped": false, "list": interpreted};
+    return { "comped": false, "list": interpreted };
   }
 }
 
@@ -21,41 +21,68 @@ function tabbed(list) {
   }
 }
 
-function isTabbed() {
+function checkTabbed() {
   const tabInput = parseInt(document.getElementById("tabbed").value);
   return Boolean(tabInput);
 }
 
 // Ui
-function hideOther() {
-  let other = this.document.querySelectorAll(".other");
-  for (let o = 0; o < other.length; o++) {
-    other[o].classList.add("invisible");
+function hideOther(comp) {
+  const showSpot = document.querySelector(".other-spot");
+  if (showSpot.querySelector("#comp-box") !== null) {
+    showSpot.removeChild(showSpot.querySelector("#comp-box"));
+  }
+  if (showSpot.querySelector("#inter-box") !== null) {
+    showSpot.removeChild(showSpot.querySelector("#inter-box"));
   }
 }
 
-function show() {
-  hideOther();
-  let show;
-  console.log(`Lang Type: ${langType().comped}`)
-  if (langType().comped) {
-    show = this.document.querySelectorAll(".comp");
+function hideAllOther() {
+  const showSpot = document.querySelector(".other-spot");
+  if (showSpot.querySelector("#comp-box") !== null) {
+    showSpot.removeChild(showSpot.querySelector("#comp-box"));
+  }
+  if (showSpot.querySelector("#inter-box") !== null) {
+    showSpot.removeChild(showSpot.querySelector("#inter-box"));
+  }
+}
+
+function show(comp) {
+  const hideSpot = document.querySelector(".hide-spot");
+  const showSpot = document.querySelector(".other-spot");
+  let elements;
+  hideOther(comp);
+  if (comp) {
+    elements = hideSpot.querySelector("#comp-box");
   } else {
-    show = this.document.querySelectorAll(".inter");
+    elements = hideSpot.querySelector("#inter-box");
   }
-
-  for (let s = 0; s < show.length; s++) {
-    show[s].classList.remove("invisible");
-  }
+  showSpot.appendChild(elements.cloneNode(true));
 }
 
-addEventListener("load", function() {
+function logStates(comp, tab) {
+  console.log(comp);
+  console.log(tab);
+}
+
+addEventListener("load", function () {
   const form = this.document.querySelector("form");
+  let compedState;
+  let tabbedState;
+  logStates(compedState, tabbedState);
   this.setInterval(() => {
-    if (isTabbed()) {
-      hideOther();
-      return;
+    const isComped = langType().comped;
+    const isTabbed = checkTabbed();
+    logStates(compedState, tabbedState);
+    if (isComped !== compedState || isTabbed !== tabbedState) {
+      compedState = isComped;
+      tabbedState = checkTabbed();
+      if (tabbedState === false) {
+        show(isComped);
+      } else {
+        hideAllOther(isComped);
+        return;
+      }
     }
-    show();
   }, 500)
 })
