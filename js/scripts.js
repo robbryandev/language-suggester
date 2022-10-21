@@ -1,9 +1,9 @@
 // Business
-// narrowed [nim, python]
+// narrowed [nim, python, Javascript, R]
 function langType() {
   const comped = parseInt(document.getElementById("lang-type").value);
   const compiled = ["C#", "Nim", "Rust", "Swift"];
-  const interpreted = ["Ruby", "JavaScript", "Python"];
+  const interpreted = ["Ruby", "JavaScript", "Python", "R"];
 
   if (comped === 1) {
     return { "comped": true, "list": compiled };
@@ -14,7 +14,8 @@ function langType() {
 
 function tabbed(list) {
   const tabbedLangs = ["Nim", "Python"];
-  if (tabbedLangs[0] in list) {
+  console.log(list);
+  if (list.includes(tabbedLangs[0])) {
     return tabbedLangs[0];
   } else {
     return tabbedLangs[1];
@@ -22,8 +23,45 @@ function tabbed(list) {
 }
 
 function checkTabbed() {
-  const tabInput = parseInt(document.getElementById("tabbed").value);
+  const tabInput = parseInt(document.querySelector("#tabbed").value);
   return Boolean(tabInput);
+}
+
+function yesReturn(id, entry, noList) {
+  const idInput = parseInt(document.querySelector(`#${id}`).value);
+  const idBool = Boolean(idInput);
+  
+  if (idBool) {
+    return entry;
+  } else {
+    return noList;
+  }
+}
+
+// final check
+function getLanguage(event) {
+  event.preventDefault();
+  let suggested;
+  let checkQuestion;
+  const langs = langType();
+  if (checkTabbed()) {
+    suggested = tabbed(langs.list);
+  } else {
+    if (langs.comped) {
+
+    } else {
+      checkQuestion = yesReturn("work-data", "R", ["Ruby", "Javascript"]);
+      if (checkQuestion === "R") {
+        suggested = "R"
+      }
+      checkQuestion = yesReturn("local-script", "Javascript", ["Ruby", "R"]);
+      if (checkQuestion === "Javascript") {
+        suggested = "Javascript";
+      }
+    }
+  }
+  console.log(suggested);
+  return suggested;
 }
 
 // Ui
@@ -81,7 +119,12 @@ function inputStates(cState, tState) {
   }, 500)
 }
 
+
+// load
 addEventListener("load", function () {
   const form = this.document.querySelector("form");
   inputStates(compedState, tabbedState);
+  form.addEventListener("submit", function(ev) {
+    getLanguage(ev);
+  });
 })

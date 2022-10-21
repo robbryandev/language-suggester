@@ -17,16 +17,16 @@
     <hr class="mb-3">
     <form>
       <div class="form-group w-75 m-auto text-center">
-        <label for="lang-type">Prefered Language Type:</label>
+        <label for="lang-type" class="mt-2">Prefered Language Type:</label>
         <br>
         <select name="lang-type" id="lang-type" class="form-control">
           <option value="0">Interpreted</option>
           <option value="1">Compiled</option>
         </select>
         <br>
-        <label for="tabbed">Tab based blocks:</label>
+        <label for="tabbed" class="mt-2">Tab based blocks:</label>
         <br>
-        <select name="lang-type" id="tabbed" class="form-control">
+        <select name="tabbed" id="tabbed" class="form-control">
           <option value="1">Yes</option>
           <option value="0">No</option>
         </select>
@@ -37,24 +37,32 @@
         <div class="hide-spot invisible">
           <div id="inter-box">
             <br>
-            <label for="in-3" class="inter other mt-4">inter 1</label>
-            <input type="text" class="form-control inter other" id="in-3">
+            <label for="local-script" class="inter other mt-2">Do you want to do local scripting?</label>
             <br>
-            <label for="in-4" class="inter other mt-4">inter 2</label>
-            <input type="text" class="form-control inter other" id="in-4">
+            <select name="local-script" id="local-script" class="form-control">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
             <br>
-            <label for="in-5" class="inter other mt-4">inter 3</label>
+            <label for="work-data" class="inter other mt-2">Do you need to work with a lot of data?</label>
+            <br>
+            <select name="work-data" id="work-data" class="form-control">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+            <br>
+            <label for="in-5" class="inter other mt-2">inter 3</label>
             <input type="text" class="form-control inter other" id="in-5">
           </div>
           <div id="comp-box">
             <br>
-            <label for="comp-3" class="comp other mt-4">comp 1</label>
+            <label for="comp-3" class="comp other mt-2">comp 1</label>
             <input type="text" class="form-control comp other" id="comp-3">
             <br>
-            <label for="comp-4" class="comp other mt-4">comp 2</label>
+            <label for="comp-4" class="comp other mt-2">comp 2</label>
             <input type="text" class="form-control comp other" id="comp-4">
             <br>
-            <label for="comp-5" class="comp other mt-4">comp 3</label>
+            <label for="comp-5" class="comp other mt-2">comp 3</label>
             <input type="text" class="form-control comp other" id="comp-5">
           </div>
         </div>
