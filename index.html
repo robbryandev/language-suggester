@@ -6,13 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/jquery-3.6.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/scripts.js"></script>
   <title>Language Suggester</title>
 </head>
 <body>
   <div class="container">
-    
+    <h1 class="text-center mb-2 mt-2">Language Suggester</h1>
+    <hr class="mb-3">
+    <form>
+      <div class="form-group w-75 m-auto text-center">
+          <label for="lang-type">Prefered Language Type:</label>
+          <br>
+          <select name="lang-type" id="lang-type" class="form-control">
+            <option value="1">Interpreted</option>
+            <option value="2">Compiled</option>
+          </select>
+        <br>
+        <label for="tabbed">Tab based blocks:</label>
+        <br>
+        <select name="lang-type" id="tabbed" class="form-control">
+          <option value="1">Yes</option>
+          <option value="2">No</option>
+        </select>
+      <br>
+        <label for="in-3">Input 3</label>
+        <input type="text" class="form-control" id="in-3">
+        <br>
+        <label for="in-4">Input 4</label>
+        <input type="text" class="form-control" id="in-4">
+        <br>
+        <label for="in-5">Input 5</label>
+        <input type="text" class="form-control" id="in-5">
+      </div>
+    </form>
   </div>
 </body>
 </html>
