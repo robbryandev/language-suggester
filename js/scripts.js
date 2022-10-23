@@ -1,5 +1,58 @@
 // Business
 
+// Div method for adding a new question input
+HTMLDivElement.prototype.newQuestion = function(id, question) {
+  const br1 = document.createElement("br");
+
+  const label = document.createElement("label");
+  label.setAttribute("for", id);
+  label.setAttribute("class", "other mt-2");
+  label.innerText = question;
+
+  const br2 = document.createElement("br");
+
+  const select = document.createElement("select");
+  select.setAttribute("name", id);
+  select.setAttribute("id", id);
+  select.setAttribute("class", "form-control");
+
+  const option1 = document.createElement("option");
+  option1.setAttribute("value", "1");
+  option1.innerText = "Yes";
+
+  const option2 = document.createElement("option");
+  option2.setAttribute("value", "0");
+  option2.innerText = "No";
+
+  select.appendChild(option1);
+  select.appendChild(option2);
+
+  const elems = [br1, label, br2, select];
+  for (let e = 0; e < elems.length; e++) {
+    this.appendChild(elems[e]);
+  }
+}
+
+// Div method for creating the interpreted language questions
+HTMLDivElement.prototype.setInterQuestions = function() {
+  const box = document.createElement("div");
+  box.setAttribute("id", "inter-box");
+  box.newQuestion("local-script", "Do you want to do local scripting?");
+  box.newQuestion("work-data", "Do you need to work with a lot of data?");
+  box.newQuestion("back-end", "Do you need a backend?");
+  this.appendChild(box);
+}
+
+// Div method for creating the compiled language questions
+HTMLDivElement.prototype.setCompQuestions = function() {
+  const box = document.createElement("div");
+  box.setAttribute("id", "comp-box");
+  box.newQuestion("first-lang", "Is this your first language?");
+  box.newQuestion("meta-q", "Do you want meta programming features?");
+  box.newQuestion("ios", "Do you want to work with IOS?");
+  this.appendChild(box);
+}
+
 // Gets an object with a bool of if the languages are compiled and a list of language options
 function langType() {
   const comped = parseInt(document.getElementById("lang-type").value);
@@ -95,7 +148,7 @@ function setImg(lang) {
 }
 
 // Hides extra questions
-function hideOther(comp) {
+function hideOther() {
   const showSpot = document.querySelector(".other-spot");
   if (showSpot.querySelector("#comp-box") !== null) {
     showSpot.removeChild(showSpot.querySelector("#comp-box"));
@@ -107,16 +160,13 @@ function hideOther(comp) {
 
 // Shows extra questions
 function show(comp) {
-  const hideSpot = document.querySelector(".hide-spot");
   const showSpot = document.querySelector(".other-spot");
-  let elements;
-  hideOther(comp);
+  hideOther();
   if (comp) {
-    elements = hideSpot.querySelector("#comp-box");
+    showSpot.setCompQuestions();
   } else {
-    elements = hideSpot.querySelector("#inter-box");
+    showSpot.setInterQuestions();
   }
-  showSpot.appendChild(elements.cloneNode(true));
 }
 
 // Save global state of compiled and tabbed drop downs for change caching
@@ -134,7 +184,7 @@ function inputStates(cState, tState) {
       if (tState === false) {
         show(isComped);
       } else {
-        hideOther(isComped);
+        hideOther();
       }
     }
     compedState = cState;
